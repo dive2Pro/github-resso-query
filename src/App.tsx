@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { Routes, Route, Outlet } from 'react-router-dom';
 import Buz from './Buz';
-import { ctxResso } from './BuzModule';
+import { BizResso } from './modules/biz';
 import Link from './Link';
 
 export default function App() {
+  console.log('render App');
   return (
     <div>
       <h1>Basic Example</h1>
@@ -54,7 +55,7 @@ function Layout() {
               to="/dashboard"
               onClick={(e) => {
                 return new Promise((resolve) => {
-                  ctxResso.module.doB();
+                  BizResso.module.doB();
                   setTimeout(resolve, 300);
                 });
               }}

@@ -46,7 +46,7 @@ export function DemoProvider(props) {
   const value = {
     doA,
     doB() {
-      query.refetch();
+      // query.refetch();
     },
   };
   ctxResso.query = query;
@@ -55,3 +55,5 @@ export function DemoProvider(props) {
     <ctx.Provider value={'' as unknown as Ctx}>{props.children}</ctx.Provider>
   );
 }
+
+new Promise<number, string>((resolve, reject) => {});

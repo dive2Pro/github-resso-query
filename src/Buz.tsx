@@ -1,7 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Fragment, memo, useEffect, useMemo, useState } from 'react';
 import { ReactQueryDevtools } from 'react-query/devtools';
-import { ctxResso, useGithub } from './BuzModule';
+// import { ctxResso, useGithub } from './BuzModule';
+import { useDemoContext } from './modules';
+import { BizResso } from './modules/biz';
+import { BuzResso } from './modules/buz';
 
 export default function App() {
   const [state, setState] = useState();
@@ -15,8 +18,9 @@ export default function App() {
 }
 
 function Example() {
-  useGithub(true);
-  const { isLoading, error, data, isFetching } = ctxResso.query;
+  // useGithub(true);
+  // const aModule = useDemoContext('A');
+  const { isLoading, error, data, isFetching } = BizResso.query;
   const memoedChildren = useMemo(() => {
     return (
       <Fragment>
@@ -34,30 +38,39 @@ function Example() {
       <strong>✨ {data?.stargazers_count}</strong>{' '}
       <strong>🍴 {data?.forks_count}</strong>
       <div>{isFetching ? 'Updating...' : ''}</div>
-      <button onClick={ctxResso.module.doB}>Click</button>
+      <button onClick={BizResso.module.doB}>Click</button>
       {memoedChildren}
     </div>
   );
 }
 
 function _DD() {
-  const { a } = ctxResso;
+  const { a } = BizResso;
 
   console.log('render DD', a);
   const renderAA = useMemo(() => <AA />, []);
+  const renderBuz = useMemo(() => <Buz />, []);
   // return <AA />
 
   return (
     <>
       {renderAA}a = {a}
+      {renderBuz}
     </>
   );
+}
+
+function Buz() {
+  const { a } = BuzResso;
+  console.log(' buz render~~~~~');
+  return null;
 }
 
 const DD = memo(_DD);
 
 function AA() {
   console.log('render AA ');
+  const aModule = BizResso;
 
-  return <button onClick={() => ctxResso.module.doA()}>AA</button>;
+  return <button onClick={() => aModule.module.doA()}>AA</button>;
 }

@@ -4,8 +4,8 @@ import { BrowserRouter } from 'react-router-dom';
 
 import './index.css';
 import App from './App';
-import { DemoProvider } from './BuzModule';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { DemoProvider } from './modules';
 
 const queryClient = new QueryClient();
 
