@@ -54,7 +54,7 @@ function Layout() {
               to="/dashboard"
               onClick={(e) => {
                 return new Promise((resolve) => {
-                  ctxResso.module.doA();
+                  ctxResso.module.doB();
                   setTimeout(resolve, 300);
                 });
               }}

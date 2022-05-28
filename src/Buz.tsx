@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Fragment, memo, useEffect, useMemo, useState } from 'react';
 import { ReactQueryDevtools } from 'react-query/devtools';
-import { ctxResso } from './BuzModule';
+import { ctxResso, useGithub } from './BuzModule';
 
 export default function App() {
   const [state, setState] = useState();
@@ -15,6 +15,7 @@ export default function App() {
 }
 
 function Example() {
+  useGithub(true);
   const { isLoading, error, data, isFetching } = ctxResso.query;
   const memoedChildren = useMemo(() => {
     return (
