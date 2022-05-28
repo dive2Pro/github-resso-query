@@ -1,7 +1,7 @@
 import axios from 'axios';
 import resso from 'resso';
 import { useQuery } from 'react-query';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 function useGithub(options) {
   return useQuery(
@@ -59,6 +59,10 @@ export function useModuleBiz() {
     BizResso = r;
     return r;
   });
+  useEffect(() => {
+    console.log(bizResso.query === query, ' isEqual query')
+
+  })
   bizResso.query = query;
   return bizResso;
 }

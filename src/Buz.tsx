@@ -71,6 +71,6 @@ const DD = memo(_DD);
 function AA() {
   console.log('render AA ');
   const aModule = BizResso;
-
+  const { query } = aModule;
   return <button onClick={() => aModule.module.doA()}>AA</button>;
 }
